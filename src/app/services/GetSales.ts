@@ -8,7 +8,7 @@ export const GetSales = async (
   search: string
 ) => {
   const response = await axios.get(
-    `https://projeto-back-dacy.onrender.com/homepage/${page}/${limit}/${filter}/${order}`,
+    `https://projeto-back-dacy.onrender.com/homepage/GetSales/${page}/${limit}/${filter}/${order}`,
     {
       params: {
         search: search,
