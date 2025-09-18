@@ -34,27 +34,23 @@ export default function WarehousesPage() {
   const [receita, setReceita] = useState(0);
 
   const GetSalesTable = async () => {
-    setTimeout(async () => {
-      const response = await GetSales(page, limit, filter, order, search);
-      if (response) {
-        setPage(Number(response.data.currentPage));
-        setTotalPages(response.data.totalPages);
-        setSales([...response.data.sales]);
-        setLoading(false);
-      }
-    }, 1000);
+    const response = await GetSales(page, limit, filter, order, search);
+    if (response) {
+      setPage(Number(response.data.currentPage));
+      setTotalPages(response.data.totalPages);
+      setSales([...response.data.sales]);
+      setLoading(false);
+    }
   };
 
   const HandleGetDataSales = async () => {
-    setTimeout(async () => {
-      const data: any = await GetDataSales();
-      if (data) {
-        setTotal(data.data.totalVendas);
-        setLucroDia(data.data.lucroDoDia);
-        setTotalLucro(data.data.lucroTotal);
-        setReceita(data.data.totalValorSales);
-      }
-    }, 1000);
+    const data: any = await GetDataSales();
+    if (data) {
+      setTotal(data.data.totalVendas);
+      setLucroDia(data.data.lucroDoDia);
+      setTotalLucro(data.data.lucroTotal);
+      setReceita(data.data.totalValorSales);
+    }
   };
 
   useEffect(() => {
@@ -152,7 +148,6 @@ export default function WarehousesPage() {
         HandleIdEditSale={(id: string) => {
           setIdEditSale(id);
           setEditVendaForm(false);
-          HandleGetDataSales();
         }}
         HandleDataSale={(sale: WarehouseRowProps[]) => setDataSaleEdit(sale)}
         warehouseData={sales}
@@ -214,6 +209,7 @@ export default function WarehousesPage() {
           open={openFormDelete}
           mensagem="Deseja mesmo deletar essa venda?"
           CloseModal={() => {
+            setIdDeleteSale("");
             setLoading(true);
             setOpenFormDelete(false);
             GetSalesTable();

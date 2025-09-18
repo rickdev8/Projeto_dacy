@@ -26,6 +26,11 @@ export const ConfirmDelete = ({
     }
   }, [open]);
 
+  const HandleDelete = async () => {
+    DeleteSale(id);
+    CloseModal();
+  };
+
   return (
     <dialog className={styles.dialog} ref={dialogRef}>
       <div className={styles.overlay}>
@@ -35,13 +40,7 @@ export const ConfirmDelete = ({
             <button onClick={() => ShowModal(false)} className={styles.cancel}>
               Cancelar
             </button>
-            <button
-              onClick={() => {
-                DeleteSale(id);
-                CloseModal();
-              }}
-              className={styles.confirm}
-            >
+            <button onClick={() => HandleDelete()} className={styles.confirm}>
               Confirmar
             </button>
           </div>
