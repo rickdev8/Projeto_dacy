@@ -42,7 +42,7 @@ export default function WarehousesPage() {
         setSales([...response.data.sales]);
         setLoading(false);
       }
-    }, 800);
+    }, 1000);
   };
 
   const HandleGetDataSales = async () => {
@@ -54,7 +54,7 @@ export default function WarehousesPage() {
         setTotalLucro(data.data.lucroTotal);
         setReceita(data.data.totalValorSales);
       }
-    }, 800);
+    }, 1000);
   };
 
   useEffect(() => {
