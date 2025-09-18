@@ -43,25 +43,22 @@ export default function WarehousesPage() {
     }
   };
 
-  const Reload = () => {
-    const HandleGetDataSales = async () => {
-      const data: any = await GetDataSales();
-      if (data) {
-        setTotal(data.data.totalVendas);
-        setLucroDia(data.data.lucroDoDia);
-        setTotalLucro(data.data.lucroTotal);
-        setReceita(data.data.totalValorSales);
-      }
-    };
-    const GetSalesTable = async () => {
-      const response = await GetSales(page, limit, filter, order, search);
-      if (response) {
-        setPage(Number(response.data.currentPage));
-        setTotalPages(response.data.totalPages);
-        setSales([...response.data.sales]);
-        setLoading(false);
-      }
-    };
+  const Reload = async () => {
+    const data: any = await GetDataSales();
+    if (data) {
+      setTotal(data.data.totalVendas);
+      setLucroDia(data.data.lucroDoDia);
+      setTotalLucro(data.data.lucroTotal);
+      setReceita(data.data.totalValorSales);
+    }
+
+    const response = await GetSales(page, limit, filter, order, search);
+    if (response) {
+      setPage(Number(response.data.currentPage));
+      setTotalPages(response.data.totalPages);
+      setSales([...response.data.sales]);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
