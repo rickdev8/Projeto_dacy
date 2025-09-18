@@ -7,14 +7,14 @@
   background: white;
   color: #0c191fe3;
   display: flex;
-  font-size: 15px;
+  font-size: 14px;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
 }
 
 .value {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
 }
 
