@@ -1,0 +1,19 @@
+import axios from "axios";
+
+export const GetSales = async (
+  page: number,
+  limit: number,
+  filter: string,
+  order: string,
+  search: string
+) => {
+  const response = await axios.get(
+    `http://localhost:3000/homepage/GetSales/${page}/${limit}/${filter}/${order}`,
+    {
+      params: {
+        search: search,
+      },
+    }
+  );
+  return response;
+};
