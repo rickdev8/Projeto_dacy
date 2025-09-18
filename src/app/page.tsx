@@ -1,12 +1,9 @@
 "use client";
-
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 
 export default function page() {
- 
-  return (
-    <div className={styles.container}>
-      
-    </div>
-  );
+  // app/page.tsx
+
+  redirect("/homepage");
 }
