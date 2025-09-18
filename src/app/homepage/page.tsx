@@ -43,20 +43,30 @@ export default function WarehousesPage() {
     }
   };
 
-  const HandleGetDataSales = async () => {
-    const data: any = await GetDataSales();
-    if (data) {
-      setTotal(data.data.totalVendas);
-      setLucroDia(data.data.lucroDoDia);
-      setTotalLucro(data.data.lucroTotal);
-      setReceita(data.data.totalValorSales);
-    }
+  const Reload = () => {
+    const HandleGetDataSales = async () => {
+      const data: any = await GetDataSales();
+      if (data) {
+        setTotal(data.data.totalVendas);
+        setLucroDia(data.data.lucroDoDia);
+        setTotalLucro(data.data.lucroTotal);
+        setReceita(data.data.totalValorSales);
+      }
+    };
+    const GetSalesTable = async () => {
+      const response = await GetSales(page, limit, filter, order, search);
+      if (response) {
+        setPage(Number(response.data.currentPage));
+        setTotalPages(response.data.totalPages);
+        setSales([...response.data.sales]);
+        setLoading(false);
+      }
+    };
   };
 
   useEffect(() => {
     setLoading(true);
-    GetSalesTable();
-    HandleGetDataSales();
+    Reload();
   }, [page, limit, search, order, filter]);
 
   return (
@@ -181,8 +191,7 @@ export default function WarehousesPage() {
           closeAddProduct={() => {
             setLoading(true);
             setOpen(false);
-            GetSalesTable();
-            HandleGetDataSales();
+            Reload();
           }}
         />
       )}
@@ -194,8 +203,7 @@ export default function WarehousesPage() {
             setLoading(true);
             setEditVendaForm(false);
             setIdEditSale("");
-            GetSalesTable();
-            HandleGetDataSales();
+            Reload();
           }}
           dataSale={dataSaleEdit}
           id={idEditSale}
@@ -212,8 +220,7 @@ export default function WarehousesPage() {
             setIdDeleteSale("");
             setLoading(true);
             setOpenFormDelete(false);
-            GetSalesTable();
-            HandleGetDataSales();
+            Reload();
           }}
         />
       )}
