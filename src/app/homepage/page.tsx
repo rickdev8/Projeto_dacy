@@ -42,7 +42,7 @@ export default function WarehousesPage() {
         setSales([...response.data.sales]);
         setLoading(false);
       }
-    }, 1200);
+    }, 800);
   };
 
   const HandleGetDataSales = async () => {
@@ -54,7 +54,7 @@ export default function WarehousesPage() {
         setTotalLucro(data.data.lucroTotal);
         setReceita(data.data.totalValorSales);
       }
-    }, 1200);
+    }, 800);
   };
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function WarehousesPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Bem vinda, Dacyrlan!</h1>
+      <h1 className={styles.h1}>Bem vinda, Zoni!</h1>
 
       <div className={styles.cardsWrapper}>
         <DashboardCard
