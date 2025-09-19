@@ -89,12 +89,16 @@ export default function WarehouseTable({
                 <td>{formatCurrency(Number(w.precoVenda) / 100)}</td>
                 <th>
                   {formatCurrency(
-                    (Number(w.precoVenda) + Number(w.precoCusto)) / 100
+                    ((Number(w.precoVenda) + Number(w.precoCusto)) *
+                      Number(w.quantidadeProduto)) /
+                      100
                   )}
                 </th>
                 <td>
                   {formatCurrency(
-                    (Number(w.precoVenda) - Number(w.precoCusto)) / 100
+                    ((Number(w.precoVenda) - Number(w.precoCusto)) *
+                      Number(w.quantidadeProduto)) /
+                      100
                   )}
                 </td>
                 <td>{w.quantidadeProduto}</td>
