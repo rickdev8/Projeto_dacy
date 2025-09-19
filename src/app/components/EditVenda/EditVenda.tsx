@@ -120,35 +120,6 @@ export default function EditVendaForm({
                 </div>
               </div>
             </div>
-            <div className={styles.field}>
-              <label>Metodo Pagamento</label>
-              <select
-                value={metodoPagamento}
-                onChange={(e) => setMetodoPagamento(e.target.value)}
-                required
-                className={styles.select}
-              >
-                <option value="">Selecione o método</option>
-                <option value="Pix">Pix</option>
-                <option value="Cartao">Cartão</option>
-                <option value="Dinheiro">Dinheiro</option>
-                <option value="Boleto">Boleto</option>
-              </select>
-            </div>
-
-            <div className={styles.field}>
-              <label>Status Pagamento</label>
-              <select
-                value={statusPagamento}
-                onChange={(e) => setStatusPagamento(e.target.value)}
-                required
-                className={styles.select}
-              >
-                <option value="">Selecione o método</option>
-                <option value="Pendente">Pendente</option>
-                <option value="Pago">Pago</option>6
-              </select>
-            </div>
 
             <div className={styles.field}>
               <label>Preço de Venda</label>

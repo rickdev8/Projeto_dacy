@@ -40,8 +40,6 @@ export default function AddProductForm({
     const sale = {
       nomeProduto,
       quantidadeProduto: quantidade,
-      metodoPagamento,
-      statusPagamento,
       precoVenda,
       precoCusto,
     };
@@ -65,7 +63,7 @@ export default function AddProductForm({
     <dialog ref={dialogRef} className={styles.dialog}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Adicionar Venda</h2>
+          <h2>Registrar produto</h2>
           <button
             className={styles.close}
             onClick={() => {
@@ -106,36 +104,6 @@ export default function AddProductForm({
                 }}
                 placeholder="Ex: 100"
               />
-            </div>
-
-            <div className={styles.field}>
-              <label>Método de Pagamento</label>
-              <select
-                required
-                className={styles.select}
-                value={metodoPagamento}
-                onChange={(e) => setMetodoPagamento(e.target.value)}
-              >
-                <option value="">Selecione o método</option>
-                <option value="Pix">Pix</option>
-                <option value="Cartao">Cartão</option>
-                <option value="Dinheiro">Dinheiro</option>
-                <option value="Boleto">Boleto</option>
-              </select>
-            </div>
-
-            <div className={styles.field}>
-              <label>Status do Pagamento</label>
-              <select
-                required
-                className={styles.select}
-                value={statusPagamento}
-                onChange={(e) => setStatusPagamento(e.target.value)}
-              >
-                <option value="">Selecione o status</option>
-                <option value="Pago">Pago</option>
-                <option value="Pendente">Pendente</option>
-              </select>
             </div>
 
             <div className={styles.field}>

@@ -66,12 +66,11 @@ export default function WarehouseTable({
         <thead>
           <tr>
             <th>Nome produto</th>
-            <th>Metodo pagamento</th>
             <th>Preco de custo</th>
             <th>Preco de venda</th>
+            <th>Total</th>
+            <th>Lucro</th>
             <th>Quantidade</th>
-            <th>Status</th>
-            <th>Data</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -86,18 +85,20 @@ export default function WarehouseTable({
             sales.map((w, i) => (
               <tr key={i} className={styles.row}>
                 <td>{w.nomeProduto}</td>
-                <td className={styles.id}>{w.metodoPagamento}</td>
                 <td>{formatCurrency(Number(w.precoCusto) / 100)}</td>
                 <td>{formatCurrency(Number(w.precoVenda) / 100)}</td>
-                <td>{w.quantidadeProduto}</td>
-                <td>{w.statusPagamento}</td>
+                <th>
+                  {formatCurrency(
+                    (Number(w.precoVenda) + Number(w.precoCusto)) / 100
+                  )}
+                </th>
                 <td>
-                  {new Date(w.data).toLocaleDateString("pt-BR", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                  })}
+                  {formatCurrency(
+                    (Number(w.precoVenda) - Number(w.precoCusto)) / 100
+                  )}
                 </td>
+                <td>{w.quantidadeProduto}</td>
+
                 <td className={styles.actions}>
                   <FiEdit2
                     onClick={() => {

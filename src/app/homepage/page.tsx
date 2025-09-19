@@ -10,7 +10,6 @@ import AddProductForm from "@/app/components/FormProduct/FormAddProduct";
 import EditVendaForm from "@/app/components/EditVenda/EditVenda";
 import { ConfirmDelete } from "@/app/components/ConfirmDelete/ConfirmDelete";
 import { GetSales } from "../services/GetSales";
-import { GetDataSales } from "../services/GetDataSales";
 
 export default function WarehousesPage() {
   const [numero] = useState(29);
@@ -34,14 +33,6 @@ export default function WarehousesPage() {
   const [receita, setReceita] = useState(0);
 
   const Reload = async () => {
-    const data: any = await GetDataSales();
-    if (data) {
-      setTotal(data.data.totalVendas);
-      setLucroDia(data.data.lucroDoDia);
-      setTotalLucro(data.data.lucroTotal);
-      setReceita(data.data.totalValorSales);
-    }
-
     const response = await GetSales(page, limit, filter, order, search);
     if (response) {
       setPage(Number(response.data.currentPage));
@@ -60,50 +51,15 @@ export default function WarehousesPage() {
     <div className={styles.container}>
       <h1 className={styles.h1}>Bem vinda, Darcy!</h1>
 
-      <div className={styles.cardsWrapper}>
-        <DashboardCard
-          title="Total de vendas realizadas:"
-          value={total}
-          percentage={12}
-          color="#7c3aed"
-          icon={<FaArrowTrendUp />}
-        />
-        <DashboardCard
-          title="Receita:"
-          value={(receita / 100).toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })}
-          percentage={12}
-          icon={<FaArrowTrendUp />}
-        />
-        <DashboardCard
-          title="Lucro total até o momento:"
-          value={(totalLucro / 100).toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })}
-          percentage={12}
-          icon={<FaArrowTrendUp />}
-        />
-        <DashboardCard
-          title="Lucro do dia:"
-          value={(lucroDia / 100).toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })}
-          percentage={12}
-          icon={<FaArrowTrendUp />}
-        />
-      </div>
+      <div className={styles.cardsWrapper}></div>
 
-      <h2 className={styles.h2}>Tabela de vendas</h2>
+      <h2 className={styles.h2}>Tabela de produtos</h2>
 
       <div className={styles.topBar}>
         <div className={styles.left}>
           <input
             type="text"
-            placeholder="Pesquisar Vendas"
+            placeholder="Pesquisar produtos"
             className={styles.search}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -134,7 +90,7 @@ export default function WarehousesPage() {
 
         <div className={styles.rigth}>
           <button onClick={() => setOpen(true)} className={styles.add}>
-            + Nova Venda
+            + Nova Produto
           </button>
         </div>
       </div>
