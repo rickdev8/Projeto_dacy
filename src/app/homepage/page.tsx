@@ -144,7 +144,7 @@ export default function WarehousesPage() {
         loading={loading}
         HandleIdEditSale={(id: string) => {
           setIdEditSale(id);
-          setEditVendaForm(true);
+          setEditVendaForm(false);
         }}
         HandleDataSale={(sale: WarehouseRowProps[]) => setDataSaleEdit(sale)}
         warehouseData={sales}
@@ -188,8 +188,8 @@ export default function WarehousesPage() {
           open={editVendaForm}
           CloseEditProduct={() => {
             setLoading(true);
-            setEditVendaForm(false);
             setIdEditSale("");
+            setEditVendaForm(false);
             Reload();
           }}
           dataSale={dataSaleEdit}
