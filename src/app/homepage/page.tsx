@@ -33,16 +33,6 @@ export default function WarehousesPage() {
   const [lucroDia, setLucroDia] = useState(0);
   const [receita, setReceita] = useState(0);
 
-  const GetSalesTable = async () => {
-    const response = await GetSales(page, limit, filter, order, search);
-    if (response) {
-      setPage(Number(response.data.currentPage));
-      setTotalPages(response.data.totalPages);
-      setSales([...response.data.sales]);
-      setLoading(false);
-    }
-  };
-
   const Reload = async () => {
     const data: any = await GetDataSales();
     if (data) {
@@ -154,7 +144,7 @@ export default function WarehousesPage() {
         loading={loading}
         HandleIdEditSale={(id: string) => {
           setIdEditSale(id);
-          setEditVendaForm(false);
+          setEditVendaForm(true);
         }}
         HandleDataSale={(sale: WarehouseRowProps[]) => setDataSaleEdit(sale)}
         warehouseData={sales}
