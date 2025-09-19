@@ -68,7 +68,7 @@ export default function WarehousesPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Bem vinda, Zoni!</h1>
+      <h1 className={styles.h1}>Bem vinda, Darcy!</h1>
 
       <div className={styles.cardsWrapper}>
         <DashboardCard
