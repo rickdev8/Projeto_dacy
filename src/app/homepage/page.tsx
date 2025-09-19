@@ -144,7 +144,6 @@ export default function WarehousesPage() {
         loading={loading}
         HandleIdEditSale={(id: string) => {
           setIdEditSale(id);
-          setEditVendaForm(false);
         }}
         HandleDataSale={(sale: WarehouseRowProps[]) => setDataSaleEdit(sale)}
         warehouseData={sales}

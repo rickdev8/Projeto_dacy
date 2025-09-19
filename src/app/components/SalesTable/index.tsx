@@ -100,7 +100,10 @@ export default function WarehouseTable({
                 </td>
                 <td className={styles.actions}>
                   <FiEdit2
-                    onClick={() => setIdSale(w.id)}
+                    onClick={() => {
+                      setIdSale(w.id);
+                      onFormEdit(true);
+                    }}
                     size={20}
                     className={styles.iconEdit}
                   />
