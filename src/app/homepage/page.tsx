@@ -42,7 +42,7 @@ export default function WarehousesPage() {
         setSales([...response.data.sales]);
         setLoading(false);
       }
-    }, 1200);
+    }, 1400);
   };
 
   useEffect(() => {
