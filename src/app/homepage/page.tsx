@@ -33,14 +33,16 @@ export default function WarehousesPage() {
   const [receita, setReceita] = useState(0);
 
   const Reload = async () => {
-    const response = await GetSales(page, limit, filter, order, search);
-    if (response) {
-      console.log(response);
-      setPage(Number(response.data.currentPage));
-      setTotalPages(response.data.totalPages);
-      setSales([...response.data.sales]);
-      setLoading(false);
-    }
+    setTimeout(async () => {
+      const response = await GetSales(page, limit, filter, order, search);
+      if (response) {
+        console.log(response);
+        setPage(Number(response.data.currentPage));
+        setTotalPages(response.data.totalPages);
+        setSales([...response.data.sales]);
+        setLoading(false);
+      }
+    }, 1200);
   };
 
   useEffect(() => {
