@@ -35,6 +35,7 @@ export default function WarehousesPage() {
   const Reload = async () => {
     const response = await GetSales(page, limit, filter, order, search);
     if (response) {
+      console.log(response);
       setPage(Number(response.data.currentPage));
       setTotalPages(response.data.totalPages);
       setSales([...response.data.sales]);
